@@ -1,0 +1,21 @@
+{
+  "name": "app_food",
+  "version": "1.0.0",
+  "description": "bai tap app food",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.1.0"
+  }
+}
