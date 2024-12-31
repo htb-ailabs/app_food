@@ -1,4 +1,4 @@
-import likeService from "../services/like.service.js";
+import likeService from "../services/likeList.service.js";
 import { responseSuccess } from "../common/helpers/response.helper.js";
 
 const likeController = {
