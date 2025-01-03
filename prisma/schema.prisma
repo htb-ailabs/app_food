@@ -31,7 +31,7 @@ model like_res {
   id         Int         @id @default(autoincrement())
   user_id    Int?
   res_id     Int?
-  date_like  DateTime?   @db.DateTime(0)
+  date_like  DateTime?   @default(now()) @db.Timestamp(0)
   user       user?       @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "like_res_ibfk_1")
   restaurant restaurant? @relation(fields: [res_id], references: [res_id], onDelete: NoAction, onUpdate: NoAction, map: "like_res_ibfk_2")
 
@@ -40,14 +40,15 @@ model like_res {
 }
 
 model order {
-  id         Int     @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   user_id    Int?
   food_id    Int?
   amount     Int?
-  code       String? @db.VarChar(255)
-  arr_sub_id String? @db.VarChar(255)
-  user       user?   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "order_ibfk_1")
-  food       food?   @relation(fields: [food_id], references: [food_id], onDelete: NoAction, onUpdate: NoAction, map: "order_ibfk_2")
+  code       String?   @db.VarChar(255)
+  arr_sub_id String?   @db.VarChar(255)
+  date_order DateTime? @default(now()) @db.Timestamp(0)
+  user       user?     @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "order_ibfk_1")
+  food       food?     @relation(fields: [food_id], references: [food_id], onDelete: NoAction, onUpdate: NoAction, map: "order_ibfk_2")
 
   @@index([food_id], map: "food_id")
   @@index([user_id], map: "user_id")
@@ -58,7 +59,7 @@ model rate_res {
   user_id    Int?
   res_id     Int?
   amount     Int?
-  date_like  DateTime?   @db.DateTime(0)
+  date_like  DateTime?   @default(now()) @db.Timestamp(0)
   user       user?       @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "rate_res_ibfk_1")
   restaurant restaurant? @relation(fields: [res_id], references: [res_id], onDelete: NoAction, onUpdate: NoAction, map: "rate_res_ibfk_2")
 
